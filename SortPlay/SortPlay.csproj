@@ -45,11 +45,16 @@
   <ItemGroup>
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortComparativeContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ShuffleArray\ShuffleArray.csproj">
+      <Project>{508F1DED-9D6F-4862-9D8F-BA3B35B2E9A9}</Project>
+      <Name>ShuffleArray</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SortArray\SortArray.csproj">
       <Project>{ea424f2b-f783-4474-a8c5-114f6c34b4a2}</Project>
       <Name>SortArray</Name>

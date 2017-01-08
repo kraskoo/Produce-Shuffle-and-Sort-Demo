@@ -1,71 +1,75 @@
 ﻿namespace SortPlay
 {
+    using ShuffleIndices;
     using System;
-    using System.Diagnostics;
-    using SortArray;
+    using System.Linq;
 
     public static class EntryPoint
     {
+        private static readonly Shuffle Shuffle = new Shuffle();
+
         public static void Main()
         {
-            var sw = new Stopwatch();
-            #region Unsorted sequence
-            int[] nums = { 4, 6, 2 - 1, 67, 33, 992, -423 };            
-            Console.WriteLine($"Unsorted numbers:{Environment.NewLine}{string.Join(", ", nums)}");
-            #endregion
-            #region Bubble Sort
-            sw.Start();
-            Console.WriteLine(
-                $"Bubble Sort: {nums.GetResultFromSortArray(new BubbleSort())}");
-            sw.Stop();
-            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
-            #endregion
-            sw.Restart();
-            #region Selection Sort
-            sw.Start();
-            Console.WriteLine(
-                $"Selection Sort: {nums.GetResultFromSortArray(new SelectionSort())}");
-            sw.Stop();
-            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
-            #endregion
-            sw.Restart();
-            #region Insertion Sort
-            sw.Start();
-            Console.WriteLine(
-                $"Insertion Sort: {nums.GetResultFromSortArray(new InsertionSort())}");
-            sw.Stop();
-            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
-            #endregion
-            sw.Restart();
-            #region Merge Sort
-            sw.Start();
-            Console.WriteLine(
-                $"Merge Sort: {nums.GetResultFromSortArray(new MergeSort())}");
-            sw.Stop();
-            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
-            #endregion
-            sw.Restart();
-            #region Quick Sort
-            sw.Start();
-            Console.WriteLine(
-                $"Quick Sort: {nums.GetResultFromSortArray(new QuickSort())}");
-            sw.Stop();
-            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
-            #endregion
+            DefaultResults();
+            Console.WriteLine("50 Items");
+            Console.WriteLine("----------------");
+            ResultWithArrayOf50Items();
+            Console.WriteLine($"{Environment.NewLine}100 Items");
+            Console.WriteLine("----------------");
+            ResultWithArrayOf100Items();
+            Console.WriteLine($"{Environment.NewLine}150 Items");
+            Console.WriteLine("----------------");
+            ResultWithArrayOf150Items();
+            Console.WriteLine($"{Environment.NewLine}200 Items");
+            Console.WriteLine("----------------");
+            ResultWithArrayOf200Items();
         }
 
-        private static string GetResultFromSortArray(this int[] nums, ISortable sortableStrategy)
+        private static void ResultWithArrayOf200Items(bool toShowItems = false)
         {
-            int[] copy = nums.CopyArray();
-            sortableStrategy.Sort(copy);
-            return $"{Environment.NewLine}{string.Join(", ", copy)}";
+            var items = Enumerable.Range(1, 200).ToArray();
+            Shuffle.ShuffleItems(items);
+            items.Print(toShowItems);
         }
 
-        private static int[] CopyArray(this int[] nums)
+        private static void ResultWithArrayOf150Items(bool toShowItems = false)
         {
-            int[] copyOfNums = new int[nums.Length];
-            nums.CopyTo(copyOfNums, 0);
-            return copyOfNums;
+            var items = Enumerable.Range(1, 150).ToArray();
+            Shuffle.ShuffleItems(items);
+            items.Print(toShowItems);
+        }
+
+        private static void ResultWithArrayOf100Items(bool toShowItems = false)
+        {
+            var items = Enumerable.Range(1, 100).ToArray();
+            Shuffle.ShuffleItems(items);
+            items.Print(toShowItems);
+        }
+
+        private static void ResultWithArrayOf50Items(bool toShowItems = false)
+        {
+            var items = Enumerable.Range(1, 50).ToArray();
+            Shuffle.ShuffleItems(items);
+            items.Print(toShowItems);
+        }
+
+        private static void DefaultResults(bool toShowItems = false)
+        {
+            int[] nums = { 4, 6, 2 - 1, 67, 33, 992, -423 };
+            if (toShowItems)
+            {
+                nums.Print(toShowItems);
+            }
+            else
+            {
+                nums.GetResults(toShowItems);
+            }
+        }
+
+        private static void Print<T>(this T[] items, bool toShowItems = false)
+            where T : IComparable<T>
+        {
+            Console.WriteLine(items.GetResults(toShowItems));
         }
     }
 }
