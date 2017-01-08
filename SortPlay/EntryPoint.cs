@@ -36,6 +36,22 @@
             sw.Stop();
             Console.WriteLine($"Elapsed time: {sw.Elapsed}");
             #endregion
+            sw.Restart();
+            #region Merge Sort
+            sw.Start();
+            Console.WriteLine(
+                $"Merge Sort: {nums.GetResultFromSortArray(new MergeSort())}");
+            sw.Stop();
+            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
+            #endregion
+            sw.Restart();
+            #region Quick Sort
+            sw.Start();
+            Console.WriteLine(
+                $"Quick Sort: {nums.GetResultFromSortArray(new QuickSort())}");
+            sw.Stop();
+            Console.WriteLine($"Elapsed time: {sw.Elapsed}");
+            #endregion
         }
 
         private static string GetResultFromSortArray(this int[] nums, ISortable sortableStrategy)
