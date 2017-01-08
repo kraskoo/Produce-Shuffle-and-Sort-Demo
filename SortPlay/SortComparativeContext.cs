@@ -7,7 +7,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Handler unsorted sequence of elements and produce output result with timestamp comparison
+    /// Handle unsorted sequence of elements and produce output result with timestamp comparison
     /// </summary>
     public static class SortComparativeContext
     {
