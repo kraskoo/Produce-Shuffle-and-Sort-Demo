@@ -13,40 +13,40 @@
             DefaultResults();
             Console.WriteLine("500 Items");
             Console.WriteLine("----------------");
-            ResultWithArrayOf50Items();
+            ResultWithArrayOf500Items();
             Console.WriteLine($"{Environment.NewLine}1000 Items");
             Console.WriteLine("----------------");
-            ResultWithArrayOf100Items();
+            ResultWithArrayOf1000Items();
             Console.WriteLine($"{Environment.NewLine}1500 Items");
             Console.WriteLine("----------------");
-            ResultWithArrayOf150Items();
+            ResultWithArrayOf1500Items();
             Console.WriteLine($"{Environment.NewLine}2000 Items");
             Console.WriteLine("----------------");
-            ResultWithArrayOf200Items();
+            ResultWithArrayOf2000Items();
         }
 
-        private static void ResultWithArrayOf200Items(bool toShowItems = false)
+        private static void ResultWithArrayOf2000Items(bool toShowItems = false)
         {
             var items = Enumerable.Range(1, 2000).ToArray();
             Shuffle.ShuffleItems(items);
             items.Print(toShowItems);
         }
 
-        private static void ResultWithArrayOf150Items(bool toShowItems = false)
+        private static void ResultWithArrayOf1500Items(bool toShowItems = false)
         {
             var items = Enumerable.Range(1, 1500).ToArray();
             Shuffle.ShuffleItems(items);
             items.Print(toShowItems);
         }
 
-        private static void ResultWithArrayOf100Items(bool toShowItems = false)
+        private static void ResultWithArrayOf1000Items(bool toShowItems = false)
         {
             var items = Enumerable.Range(1, 1000).ToArray();
             Shuffle.ShuffleItems(items);
             items.Print(toShowItems);
         }
 
-        private static void ResultWithArrayOf50Items(bool toShowItems = false)
+        private static void ResultWithArrayOf500Items(bool toShowItems = false)
         {
             var items = Enumerable.Range(1, 500).ToArray();
             Shuffle.ShuffleItems(items);
