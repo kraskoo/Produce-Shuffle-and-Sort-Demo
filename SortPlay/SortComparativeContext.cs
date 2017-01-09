@@ -4,7 +4,6 @@
     using System.Diagnostics;
     using SortArray;
     using System.Text;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Handle unsorted sequence of elements and produce output result with timestamp comparison
@@ -13,7 +12,6 @@
     {
         private static readonly StringBuilder Output = new StringBuilder();
         private static readonly Stopwatch StopWatch = new Stopwatch();
-        private static Dictionary<Type, string> SortTypesByName;
 
         public static string GetResults<T>(
             this T[] items, bool toShowItems = false) where T : IComparable<T>
@@ -104,28 +102,6 @@
             T[] copyOfItems = new T[items.Length];
             items.CopyTo(copyOfItems, 0);
             return copyOfItems;
-        }
-
-        private static string GetNameByType(Type typeOfSort)
-        {
-            if (SortTypesByName == null)
-            {
-                SortTypesByName = GetTypes();
-            }
-
-            return SortTypesByName[typeOfSort];
-        }
-
-        private static Dictionary<Type, string> GetTypes()
-        {
-            return new Dictionary<Type, string>()
-            {
-                { typeof(BubbleSort), nameof(BubbleSort) },
-                { typeof(SelectionSort), nameof(SelectionSort) },
-                { typeof(InsertionSort), nameof(InsertionSort) },
-                { typeof(MergeSort), nameof(MergeSort) },
-                { typeof(QuickSort), nameof(QuickSort) }
-            };
         }
     }
 }
