@@ -1,0 +1,31 @@
+500 Items
+----------------
+Bubble Sort elapsed time:    16212
+Selection Sort elapsed time: 2702
+Insertion Sort elapsed time: 1664
+Merge Sort elapsed time:     385
+Quick Sort elapsed time:     253
+
+1000 Items
+----------------
+Bubble Sort elapsed time:    20308
+Selection Sort elapsed time: 8842
+Insertion Sort elapsed time: 6413
+Merge Sort elapsed time:     754
+Quick Sort elapsed time:     521
+
+1500 Items
+----------------
+Bubble Sort elapsed time:    34011
+Selection Sort elapsed time: 19410
+Insertion Sort elapsed time: 15294
+Merge Sort elapsed time:     1244
+Quick Sort elapsed time:     844
+
+2000 Items
+----------------
+Bubble Sort elapsed time:    59747
+Selection Sort elapsed time: 34931
+Insertion Sort elapsed time: 26814
+Merge Sort elapsed time:     1640
+Quick Sort elapsed time:     1134
