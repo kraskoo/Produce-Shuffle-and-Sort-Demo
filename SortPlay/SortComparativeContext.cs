@@ -25,55 +25,55 @@
             }
             #endregion
             #region Bubble Sort
-            items.Sort(new BubbleSort());
+            var bcopy = items.Sort(new BubbleSort());
             if (toShowItems)
             {
                 Output.AppendLine(
-                    $"{items.GetResultFromSortArray()}");
+                    $"{bcopy.GetResultFromSortArray()}");
             }
 
             Output.AppendLine($"Bubble Sort elapsed time:    {StopWatch.ElapsedTicks}");
             StopWatch.Restart();
             #endregion
             #region Selection Sort
-            items.Sort(new SelectionSort());
+            var scopy = items.Sort(new SelectionSort());
             if (toShowItems)
             {
                 Output.AppendLine(
-                    $"{items.GetResultFromSortArray()}");
+                    $"{scopy.GetResultFromSortArray()}");
             }
 
             Output.AppendLine($"Selection Sort elapsed time: {StopWatch.ElapsedTicks}");
             StopWatch.Restart();
             #endregion
             #region Insertion Sort
-            items.Sort(new InsertionSort());
+            var icopy = items.Sort(new InsertionSort());
             if (toShowItems)
             {
                 Output.AppendLine(
-                    $"{items.GetResultFromSortArray()}");
+                    $"{icopy.GetResultFromSortArray()}");
             }
 
             Output.AppendLine($"Insertion Sort elapsed time: {StopWatch.ElapsedTicks}");
             StopWatch.Restart();
             #endregion
             #region Merge Sort
-            items.Sort(new MergeSort());
+            var mcopy = items.Sort(new MergeSort());
             if (toShowItems)
             {
                 Output.AppendLine(
-                    $"{items.GetResultFromSortArray()}");
+                    $"{mcopy.GetResultFromSortArray()}");
             }
 
             Output.AppendLine($"Merge Sort elapsed time:     {StopWatch.ElapsedTicks}");
             StopWatch.Restart();
             #endregion
             #region Quick Sort
-            items.Sort(new QuickSort());
+            var qcopy = items.Sort(new QuickSort());
             if (toShowItems)
             {
                 Output.AppendLine(
-                    $"{items.GetResultFromSortArray()}");
+                    $"{qcopy.GetResultFromSortArray()}");
             }
 
             Output.Append($"Quick Sort elapsed time:     {StopWatch.ElapsedTicks}");
@@ -82,13 +82,14 @@
             return Output.ToString();
         }
 
-        private static void Sort<T>(
+        private static T[] Sort<T>(
             this T[] items, ISortable sortableStrategy) where T : IComparable<T>
         {
             T[] copy = items.CopyArray();
             StopWatch.Start();
             sortableStrategy.Sort(copy);
             StopWatch.Stop();
+            return copy;
         }
 
         private static string GetResultFromSortArray<T>(

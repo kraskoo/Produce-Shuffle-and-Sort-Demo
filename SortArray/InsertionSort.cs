@@ -11,12 +11,8 @@
             int sortedItemsCount = 1;
             do
             {
-                if (sortedItemsCount < itemsToSort.Length)
-                {
-                    T nextItem = itemsToSort[sortedItemsCount];
-                    this.MakeInsertion(nextItem, sortedItemsCount, sortedItems);
-                }
-
+                T nextItem = itemsToSort[sortedItemsCount];
+                this.MakeInsertion(nextItem, sortedItemsCount, sortedItems);
                 sortedItemsCount++;
             } while (sortedItemsCount != itemsToSort.Length);
             sortedItems.CopyTo(itemsToSort, 0);
@@ -28,10 +24,12 @@
             int max = sortedItemsCount;
             for (int index = sortedItemsCount - 1; index > -1; index--)
             {
-                if (nextItem.CompareTo(sortedItems[index]) < 0)
+                if (nextItem.CompareTo(sortedItems[index]) > 0)
                 {
-                    max = index;
+                    break;
                 }
+
+                max = index;
             }
 
             if (max != sortedItemsCount)
